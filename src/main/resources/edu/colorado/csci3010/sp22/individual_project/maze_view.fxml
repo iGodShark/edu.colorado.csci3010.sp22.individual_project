@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.colorado.csci3010.sp22.individual_project.controllers.MazeController">
+   <children>
+      <Rectangle fx:id="background" arcHeight="5.0" arcWidth="5.0" height="540.0" stroke="BLACK" strokeType="INSIDE" width="960.0" />
+      <Circle fx:id="fieldOfVision" layoutX="480.0" layoutY="270.0" radius="251.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <RadialGradient centerX="0.5" centerY="0.5" focusAngle="6.12" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.412751677852349">
+                     <color>
+                        <Color red="0.6315789222717285" green="0.6315789222717285" blue="0.6315789222717285" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6814740546734326">
+                     <color>
+                        <Color red="0.32894736528396606" green="0.32894736528396606" blue="0.32894736528396606" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Circle>
+      <Circle fx:id="playerAvatar" layoutX="480.0" layoutY="270.0" radius="45.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="1.0" blue="0.9047619104385376" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color green="1.0" blue="0.9047619104385376" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.1666666716337204" green="0.3472222089767456" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Circle>
+   </children>
+</AnchorPane>

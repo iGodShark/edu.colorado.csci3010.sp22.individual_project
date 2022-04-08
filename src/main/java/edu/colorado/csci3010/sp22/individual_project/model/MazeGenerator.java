@@ -1,4 +1,6 @@
-package edu.colorado.csci3010.sp22.individual_project;
+package edu.colorado.csci3010.sp22.individual_project.model;
+
+import edu.colorado.csci3010.sp22.individual_project.model.Room;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,21 +8,25 @@ import java.util.Map;
 
 public class MazeGenerator {
 
-    public MazeGenerator() {}
+    private int rows;
+    private int cols;
+
+    public MazeGenerator(int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+    }
 
     /**
      * Generate a randomize maze using DFS
-     * @param rows the number of rows
-     * @param cols the number of columns
      * @return a 2D ArrayList of rooms in the generated maze
      */
-    public ArrayList<ArrayList<Room>> generateMaze(int rows, int cols) {
+    public ArrayList<ArrayList<Room>> generateMaze() {
         ArrayList<ArrayList<Room>> rooms = new ArrayList<>();
         Map<Room, Boolean> visitedRooms = new HashMap<>();
 
-        for (int i = 0; i < cols; i++) {
+        for (int i = 0; i < this.cols; i++) {
             rooms.add(new ArrayList<>());
-            for (int j = 0; j < rows; j++) {
+            for (int j = 0; j < this.rows; j++) {
                 Room room = new Room();
                 rooms.get(i).add(room);
                 visitedRooms.put(room, false);

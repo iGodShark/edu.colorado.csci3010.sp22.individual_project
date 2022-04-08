@@ -1,4 +1,4 @@
-package edu.colorado.csci3010.sp22.individual_project;
+package edu.colorado.csci3010.sp22.individual_project.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
