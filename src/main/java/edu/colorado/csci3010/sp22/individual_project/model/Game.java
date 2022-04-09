@@ -7,7 +7,7 @@ public class Game {
     public Game() {
         this.maze = new Maze(new MazeGenerator(46, 25));
         this.maze.getRooms().get(0).get(0).setVisited(true);
-        this.player = new Player();
+        this.player = new Player(10, 10, 10, 10, 0.8);
     }
 
     public Maze getMaze() {

@@ -4,6 +4,10 @@ public class Player extends LivingEntity {
     private int x;
     private int y;
 
+    public Player(int health, int speed, int defense, int attack, double accuracy) {
+        super(health, speed, defense, attack, accuracy);
+    }
+
     public int getX() {
         return this.x;
     }

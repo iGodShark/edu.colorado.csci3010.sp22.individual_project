@@ -3,4 +3,4 @@
 
 ## How to run:
 
-Maven and the .idea/libraries folder should handle all dependencies. Simply open this project in IntelliJ, and run the Main class.
+Maven and the .idea/libraries folder should handle all dependencies. Simply open this project in IntelliJ, and run the Main class. Alternatively, you can run the .jar file inside of the out/artifacts folder.
