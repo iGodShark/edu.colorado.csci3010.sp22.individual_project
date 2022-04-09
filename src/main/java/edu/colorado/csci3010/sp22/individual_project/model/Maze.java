@@ -1,8 +1,5 @@
 package edu.colorado.csci3010.sp22.individual_project.model;
 
-import edu.colorado.csci3010.sp22.individual_project.model.MazeGenerator;
-import edu.colorado.csci3010.sp22.individual_project.model.Room;
-
 import java.util.ArrayList;
 
 public class Maze {

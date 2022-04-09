@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Room {
+
     public enum Wall {
         NORTH, EAST, SOUTH, WEST
     }
 
     private ArrayList<Wall> walls;
+    private boolean visited;
 
     public Room() {
         this.walls = new ArrayList<>(Arrays.asList(Wall.NORTH, Wall.EAST, Wall.SOUTH, Wall.WEST));
+        this.visited = false;
     }
 
     public ArrayList<Wall> getWalls() {
@@ -20,5 +23,13 @@ public class Room {
 
     public void removeWall(Wall wall) {
         this.walls.remove(wall);
+    }
+
+    public boolean isVisited() {
+        return this.visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 }

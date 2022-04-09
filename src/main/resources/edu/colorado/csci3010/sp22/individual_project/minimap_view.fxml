@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.colorado.csci3010.sp22.individual_project.MinimapView"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="160.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.colorado.csci3010.sp22.individual_project.controllers.MiniMapController">
+   <children>
+      <Rectangle fx:id="background" arcHeight="5.0" arcWidth="5.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="250.0" />
+   </children>
 </AnchorPane>

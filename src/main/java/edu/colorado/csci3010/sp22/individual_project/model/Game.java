@@ -6,6 +6,7 @@ public class Game {
 
     public Game() {
         this.maze = new Maze(new MazeGenerator(46, 25));
+        this.maze.getRooms().get(0).get(0).setVisited(true);
         this.player = new Player();
     }
 
@@ -24,6 +25,7 @@ public class Game {
         }
 
         this.player.setY(this.player.getY() - 1);
+        this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
         return true;
     }
 
@@ -34,6 +36,7 @@ public class Game {
         }
 
         this.player.setX(this.player.getX() + 1);
+        this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
         return true;
     }
 
@@ -44,6 +47,7 @@ public class Game {
         }
 
         this.player.setY(this.player.getY() + 1);
+        this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
         return true;
     }
 
@@ -54,6 +58,7 @@ public class Game {
         }
 
         this.player.setX(this.player.getX() - 1);
+        this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
         return true;
     }
 

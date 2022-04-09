@@ -25,6 +25,10 @@ public class MazeController {
     private Rectangle background;
     @FXML
     private Circle playerAvatar;
+    @FXML
+    private Pane miniMapContainer;
+    @FXML
+    private MiniMapController miniMapController;
 
     public MazeController() {
         this.maze = Main.getGame().getMaze();
@@ -32,6 +36,8 @@ public class MazeController {
     }
 
     public void drawMaze() {
+        this.miniMapController.drawMap();
+
         double centerX = background.getScene().getWidth() / 2;
         double centerY = background.getScene().getHeight() / 2;
         int xCoord = this.player.getX();
@@ -40,8 +46,9 @@ public class MazeController {
         ArrayList<ArrayList<Room>> rooms = this.maze.getRooms();
         ArrayList<Line> wallLines = new ArrayList<>();
 
-        for (int col = xCoord - 2; col < xCoord + 3; col++) {
-            for (int row = yCoord - 2; row < yCoord + 3; row++) {
+
+        for (int row = yCoord - 2; row < yCoord + 3; row++) {
+            for (int col = xCoord - 2; col < xCoord + 3; col++) {
                 if (col < 0 || row < 0) continue;
                 if (row >= rooms.size() || col >= rooms.get(row).size()) continue;
 
@@ -85,6 +92,7 @@ public class MazeController {
         children.add(background);
         children.add(fieldOfVision);
         children.add(playerAvatar);
+        children.add(miniMapContainer);
         children.addAll(wallLines);
 
         ((Pane) background.getScene().getRoot()).getChildren().setAll(children);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.RadialGradient?>
@@ -62,5 +63,8 @@
             </LinearGradient>
          </fill>
       </Circle>
+      <Pane fx:id="miniMapContainer" layoutX="696.0" layoutY="14.0" prefHeight="160.0" prefWidth="250.0">
+             <fx:include fx:id="miniMap" source="minimap_view.fxml" />
+      </Pane>
    </children>
 </AnchorPane>
