@@ -10,4 +10,6 @@ module edu.colorado.csci3010.sp22.individual_project {
     opens edu.colorado.csci3010.sp22.individual_project.model to javafx.fxml;
     exports edu.colorado.csci3010.sp22.individual_project.controllers;
     opens edu.colorado.csci3010.sp22.individual_project.controllers to javafx.fxml;
+    exports edu.colorado.csci3010.sp22.individual_project.model.entities;
+    opens edu.colorado.csci3010.sp22.individual_project.model.entities to javafx.fxml;
 }

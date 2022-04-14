@@ -1,5 +1,7 @@
 package edu.colorado.csci3010.sp22.individual_project.model;
 
+import edu.colorado.csci3010.sp22.individual_project.model.entities.LivingEntity;
+
 public class Player extends LivingEntity {
     private int x;
     private int y;

@@ -1,6 +1,6 @@
-package edu.colorado.csci3010.sp22.individual_project.model;
+package edu.colorado.csci3010.sp22.individual_project.model.entities;
 
-abstract class LivingEntity extends Entity {
+public abstract class LivingEntity extends Entity {
     protected int health;
     protected int maxHealth;
     protected int speed;

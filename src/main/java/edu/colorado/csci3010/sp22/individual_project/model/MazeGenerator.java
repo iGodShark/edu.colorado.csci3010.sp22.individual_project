@@ -27,7 +27,7 @@ public class MazeGenerator {
         for (int i = 0; i < this.cols; i++) {
             rooms.add(new ArrayList<>());
             for (int j = 0; j < this.rows; j++) {
-                Room room = new Room();
+                Room room = RoomFactory.getRoom();
                 rooms.get(i).add(room);
                 visitedRooms.put(room, false);
             }
