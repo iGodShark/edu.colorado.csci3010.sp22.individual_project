@@ -9,7 +9,8 @@ public abstract class LivingEntity extends Entity {
     protected double accuracy;
     protected Weapon weapon;
 
-    public LivingEntity(int health, int speed, int defense, int attack, double accuracy) {
+    public LivingEntity(Type type, int health, int speed, int defense, int attack, double accuracy) {
+        super(type);
         this.health = health;
         this.maxHealth = health;
         this.speed = speed;

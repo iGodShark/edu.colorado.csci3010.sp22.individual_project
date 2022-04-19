@@ -9,7 +9,7 @@ public class RoomFactory {
         Entity.Type[] types = Entity.Type.values();
         Room room = new Room();
 
-        if (Math.random() < 0.8) // 80% of rooms should be empty
+        if (Math.random() < 0.9) // 90% of rooms should be empty
             return room;
 
         // get a random entity to put in this room

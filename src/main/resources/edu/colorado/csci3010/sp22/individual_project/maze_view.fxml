@@ -11,24 +11,24 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.colorado.csci3010.sp22.individual_project.controllers.MazeController">
    <children>
-      <Rectangle fx:id="background" arcHeight="5.0" arcWidth="5.0" height="540.0" stroke="BLACK" strokeType="INSIDE" width="960.0" />
-      <Circle fx:id="fieldOfVision" layoutX="480.0" layoutY="270.0" radius="251.0" stroke="BLACK" strokeType="INSIDE">
+      <Pane fx:id="entities" prefHeight="540.0" prefWidth="960.0" />
+      <Rectangle height="540.0" layoutX="480.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="480.0">
          <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" focusAngle="6.12" radius="0.5">
+            <RadialGradient centerY="0.5" radius="0.5">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
+                        <Color opacity="0.0" />
                      </color>
                   </Stop>
-                  <Stop offset="0.412751677852349">
+                  <Stop offset="0.006711409395973154">
                      <color>
-                        <Color red="0.6315789222717285" green="0.6315789222717285" blue="0.6315789222717285" />
+                        <Color opacity="0.0" />
                      </color>
                   </Stop>
-                  <Stop offset="0.6814740546734326">
+                  <Stop offset="0.4527132100180062">
                      <color>
-                        <Color red="0.32894736528396606" green="0.32894736528396606" blue="0.32894736528396606" />
+                        <Color opacity="0.20000000298023224" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
@@ -39,7 +39,30 @@
                </stops>
             </RadialGradient>
          </fill>
-      </Circle>
+      </Rectangle>
+      <Rectangle height="540.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="480.0">
+         <fill>
+            <RadialGradient centerX="1.0" centerY="0.5" focusAngle="6.12" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.453593059420527">
+                     <color>
+                        <Color opacity="0.20000000298023224" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Rectangle>
       <Circle fx:id="playerAvatar" layoutX="480.0" layoutY="270.0" radius="45.0" stroke="BLACK" strokeType="INSIDE">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">

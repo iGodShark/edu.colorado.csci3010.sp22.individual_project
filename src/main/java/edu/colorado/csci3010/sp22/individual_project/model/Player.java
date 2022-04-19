@@ -7,7 +7,7 @@ public class Player extends LivingEntity {
     private int y;
 
     public Player(int health, int speed, int defense, int attack, double accuracy) {
-        super(health, speed, defense, attack, accuracy);
+        super(Type.PLAYER, health, speed, defense, attack, accuracy);
     }
 
     public int getX() {
