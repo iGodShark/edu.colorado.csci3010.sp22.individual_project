@@ -4,6 +4,7 @@ import edu.colorado.csci3010.sp22.individual_project.controllers.MazeController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.MiniMapController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.PauseController;
 import edu.colorado.csci3010.sp22.individual_project.model.Game;
+import edu.colorado.csci3010.sp22.individual_project.model.Room;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ public class Main extends Application {
     private static FXMLLoader miniMap;
     private static FXMLLoader pause;
     private static FXMLLoader pauseMiniMap;
+    private static FXMLLoader win;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -44,6 +46,9 @@ public class Main extends Application {
 
         Main.pauseMiniMap = new FXMLLoader(getClass().getResource("pause_minimap_view.fxml"));
         Main.pauseMiniMap.load();
+
+        Main.win = new FXMLLoader(getClass().getResource("win_view.fxml"));
+        Main.win.load();
 
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
@@ -75,25 +80,25 @@ public class Main extends Application {
             switch(event.getCode()) {
                 case W:
                 case UP:
-                    if (Main.game.moveNorth()) {
+                    if (Main.game.move(Room.Wall.NORTH)) {
                         ((MazeController) Main.maze.getController()).drawMaze();
                     }
                     break;
                 case D:
                 case RIGHT:
-                    if (Main.game.moveEast()) {
+                    if (Main.game.move(Room.Wall.EAST)) {
                         ((MazeController) Main.maze.getController()).drawMaze();
                     }
                     break;
                 case S:
                 case DOWN:
-                    if (Main.game.moveSouth()) {
+                    if (Main.game.move(Room.Wall.SOUTH)) {
                         ((MazeController) Main.maze.getController()).drawMaze();
                     }
                     break;
                 case A:
                 case LEFT:
-                    if (Main.game.moveWest()) {
+                    if (Main.game.move(Room.Wall.WEST)) {
                         ((MazeController) Main.maze.getController()).drawMaze();
                     }
                     break;
@@ -112,5 +117,11 @@ public class Main extends Application {
         if (scene == null) scene = new Scene(Main.pause.getRoot());
         Main.stage.setScene(scene);
         ((PauseController) Main.pause.getController()).drawMiniMap();
+    }
+
+    public static void changeToWin() {
+        Scene scene = ((Parent) Main.win.getRoot()).getScene();
+        if (scene == null) scene = new Scene(Main.win.getRoot());
+        Main.stage.setScene(scene);
     }
 }

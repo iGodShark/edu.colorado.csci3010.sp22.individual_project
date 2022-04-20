@@ -4,12 +4,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="540.0" prefWidth="960.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.colorado.csci3010.sp22.individual_project.controllers.MainMenuController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" text="Maze Generation Demo" />
-    <Button onAction="#startDemo" text="Start Demo" />
+    <Label fx:id="welcomeText" text="Maze Game">
+      <font>
+         <Font size="30.0" />
+      </font></Label>
+    <Button onAction="#startDemo" prefHeight="71.0" prefWidth="129.0" text="Start!">
+      <font>
+         <Font size="30.0" />
+      </font></Button>
 </VBox>

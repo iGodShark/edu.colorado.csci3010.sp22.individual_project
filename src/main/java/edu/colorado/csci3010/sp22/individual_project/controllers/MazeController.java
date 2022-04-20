@@ -5,6 +5,9 @@ import edu.colorado.csci3010.sp22.individual_project.model.Maze;
 import edu.colorado.csci3010.sp22.individual_project.model.Player;
 import edu.colorado.csci3010.sp22.individual_project.model.Room;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
+import edu.colorado.csci3010.sp22.individual_project.observers.Event;
+import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
+import edu.colorado.csci3010.sp22.individual_project.observers.WinEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +18,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class MazeController {
+public class MazeController implements Listener {
 
     private static final int LINE_LENGTH = 100;
     private Maze maze;
@@ -32,6 +35,7 @@ public class MazeController {
     public MazeController() {
         this.maze = Main.getGame().getMaze();
         this.player = Main.getGame().getPlayer();
+        Main.getGame().addListener(this);
     }
 
     public void drawMaze() {
@@ -116,6 +120,13 @@ public class MazeController {
 
                 entities.getChildren().add(imageView);
             }
+        }
+    }
+
+    @Override
+    public void update(Event e) {
+        if (e instanceof WinEvent) {
+            Main.changeToWin();
         }
     }
 }
