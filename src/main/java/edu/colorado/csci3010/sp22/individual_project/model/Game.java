@@ -13,7 +13,7 @@ public class Game implements Observable {
     private ArrayList<Listener> listeners;
 
     public Game() {
-        this.maze = new Maze(new MazeGenerator(46, 25));
+        this.maze = new Maze(new MazeGenerator(25, 46));
         this.maze.getRooms().get(0).get(0).setVisited(true);
         this.player = new Player(10, 10, 10, 10, 0.8);
         this.listeners = new ArrayList<>();
@@ -52,9 +52,16 @@ public class Game implements Observable {
 
         this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
 
+        // check if won
         if (isWinner()) {
             this.updateListeners(new WinEvent(this.player));
         }
+
+        // pick up any items
+        // TODO
+
+        // if enemy, get into fight
+        // TODO
 
         return true;
     }

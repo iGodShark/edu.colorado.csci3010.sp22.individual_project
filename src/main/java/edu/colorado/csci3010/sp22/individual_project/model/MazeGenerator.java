@@ -24,16 +24,16 @@ public class MazeGenerator {
         ArrayList<ArrayList<Room>> rooms = new ArrayList<>();
         Map<Room, Boolean> visitedRooms = new HashMap<>();
 
-        for (int i = 0; i < this.cols; i++) {
+        for (int i = 0; i < this.rows; i++) {
             rooms.add(new ArrayList<>());
-            for (int j = 0; j < this.rows; j++) {
+            for (int j = 0; j < this.cols; j++) {
                 Room room = RoomFactory.getRoom();
                 rooms.get(i).add(room);
                 visitedRooms.put(room, false);
             }
         }
 
-        randomDFS(visitedRooms, rooms, rooms.get(0).get(0));
+        randomDFS(visitedRooms, rooms, rooms.get(this.rows - 1).get(this.cols - 1));
 
         return rooms;
     }
