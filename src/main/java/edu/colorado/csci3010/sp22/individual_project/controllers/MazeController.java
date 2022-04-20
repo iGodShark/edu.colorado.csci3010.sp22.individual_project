@@ -116,6 +116,12 @@ public class MazeController implements Listener {
                         imageView.setX(middleX - dagger.getWidth() / 2);
                         imageView.setY(middleY - dagger.getHeight() / 2);
                         break;
+                    case STRENGTHPOTION:
+                        Image strengthPotion = new Image("strength_potion.png");
+                        imageView.setImage(strengthPotion);
+                        imageView.setX(middleX - strengthPotion.getWidth() / 2);
+                        imageView.setY(middleY - strengthPotion.getHeight() / 2);
+                        break;
                 }
 
                 entities.getChildren().add(imageView);
