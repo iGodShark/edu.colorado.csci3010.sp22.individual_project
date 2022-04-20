@@ -5,9 +5,15 @@ import edu.colorado.csci3010.sp22.individual_project.model.entities.LivingEntity
 public class Player extends LivingEntity {
     private int x;
     private int y;
+    private Backpack backpack;
 
     public Player(int health, int speed, int defense, int attack, double accuracy) {
         super(Type.PLAYER, health, speed, defense, attack, accuracy);
+        this.backpack = new Backpack();
+    }
+
+    public Backpack getBackpack() {
+        return this.backpack;
     }
 
     public int getX() {

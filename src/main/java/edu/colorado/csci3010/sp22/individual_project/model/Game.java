@@ -1,5 +1,7 @@
 package edu.colorado.csci3010.sp22.individual_project.model;
 
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
 import edu.colorado.csci3010.sp22.individual_project.observers.Event;
 import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
 import edu.colorado.csci3010.sp22.individual_project.observers.Observable;
@@ -50,15 +52,22 @@ public class Game implements Observable {
                 break;
         }
 
-        this.maze.getRooms().get(player.getY()).get(player.getX()).setVisited(true);
+        Room newRoom = this.maze.getRooms().get(player.getY()).get(player.getX());
+        newRoom.setVisited(true);
 
         // check if won
         if (isWinner()) {
             this.updateListeners(new WinEvent(this.player));
         }
 
+        Entity entity = newRoom.getEntity();
+        if (entity == null) return true;
+
         // pick up any items
-        // TODO
+        if (entity instanceof Item) {
+            this.player.getBackpack().getItems().add((Item) entity);
+            newRoom.setEntity(null);
+        }
 
         // if enemy, get into fight
         // TODO
