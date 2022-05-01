@@ -5,13 +5,8 @@ import javafx.scene.image.Image;
 public class Sword extends Weapon {
     private static Image graphic = new Image("sword.png");
 
-    public Sword() {
-        super(Type.SWORD);
-    }
-
-    @Override
-    void attack(LivingEntity e1, LivingEntity e2) {
-
+    public Sword(int damage, double accuracy) {
+        super(Type.SWORD, "Sword", damage, accuracy);
     }
 
     @Override

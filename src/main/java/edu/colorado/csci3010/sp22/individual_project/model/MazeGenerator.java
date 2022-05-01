@@ -24,10 +24,14 @@ public class MazeGenerator {
         ArrayList<ArrayList<Room>> rooms = new ArrayList<>();
         Map<Room, Boolean> visitedRooms = new HashMap<>();
 
+        // difficulty of entity in room is calculated by taking the relative distance of
+        // this room to the finish of the maze.
+        double maxDistance = Math.sqrt(Math.pow(this.rows, 2) + Math.pow(this.cols, 2));
         for (int i = 0; i < this.rows; i++) {
             rooms.add(new ArrayList<>());
             for (int j = 0; j < this.cols; j++) {
-                Room room = RoomFactory.getRoom();
+                double distance = Math.sqrt(Math.pow(i, 2) + Math.pow(j, 2));
+                Room room = RoomFactory.getRoom((int) ((maxDistance - distance) * maxDistance / 100));
                 rooms.get(i).add(room);
                 visitedRooms.put(room, false);
             }

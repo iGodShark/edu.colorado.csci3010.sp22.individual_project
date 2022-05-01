@@ -5,13 +5,8 @@ import javafx.scene.image.Image;
 public class Dagger extends Weapon {
     private static Image graphic = new Image("dagger.png");
 
-    public Dagger() {
-        super(Type.DAGGER);
-    }
-
-    @Override
-    void attack(LivingEntity e1, LivingEntity e2) {
-
+    public Dagger(int damage, double accuracy) {
+        super(Type.DAGGER, "Dagger", damage, accuracy);
     }
 
     @Override

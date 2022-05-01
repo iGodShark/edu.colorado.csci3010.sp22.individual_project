@@ -5,13 +5,8 @@ import javafx.scene.image.Image;
 public class Club extends Weapon {
     private static Image graphic = new Image("club.png");
 
-    public Club() {
-        super(Type.CLUB);
-    }
-
-    @Override
-    void attack(LivingEntity e1, LivingEntity e2) {
-
+    public Club(int damage, double accuracy) {
+        super(Type.CLUB, "Club", damage, accuracy);
     }
 
     @Override

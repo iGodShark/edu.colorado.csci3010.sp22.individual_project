@@ -2,6 +2,7 @@ package edu.colorado.csci3010.sp22.individual_project.model;
 
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Weapon;
 import edu.colorado.csci3010.sp22.individual_project.observers.Event;
 import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
 import edu.colorado.csci3010.sp22.individual_project.observers.Observable;
@@ -17,7 +18,15 @@ public class Game implements Observable {
     public Game() {
         this.maze = new Maze(new MazeGenerator(25, 46));
         this.maze.getRooms().get(0).get(0).setVisited(true);
-        this.player = new Player(10, 10, 10, 10, 0.8);
+
+        // make player
+        int health = (int) (Math.random() * 100) / 3 + 20; // 20-53
+        int speed = (int) (Math.random() * 100) / 2 + 5; // 5-55
+        int defense = (int) (Math.random() * 100) / 5 + 10; // 10-30
+        int attack = (int) (Math.random() * 100) / 6 + 5; // 5-21
+        double acc = Math.random() / 5 + 0.1; // .1-.3
+        this.player = new Player(health, speed, defense, attack, acc);
+
         this.listeners = new ArrayList<>();
     }
 
@@ -65,7 +74,12 @@ public class Game implements Observable {
 
         // pick up any items
         if (entity instanceof Item) {
-            this.player.getBackpack().getItems().add((Item) entity);
+            Backpack backpack = this.player.getBackpack();
+            // player can't pick up more than 13 usable items
+            if (backpack.getUseableItems().size() == 13 && !(entity instanceof Weapon)) {
+                return true;
+            }
+            backpack.getItems().add((Item) entity);
             newRoom.setEntity(null);
         }
 

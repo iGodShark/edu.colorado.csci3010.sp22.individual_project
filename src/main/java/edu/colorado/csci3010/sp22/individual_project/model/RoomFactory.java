@@ -3,8 +3,19 @@ package edu.colorado.csci3010.sp22.individual_project.model;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.*;
 
 public class RoomFactory {
+    private static int weaponsGenerated = 0;
 
-    public static Room getRoom() {
+    public static void reset() {
+        RoomFactory.weaponsGenerated = 0;
+    }
+
+    /**
+     * Generate a room with a chance of having an entity
+     * @param difficulty integer 1-100
+     *                   Describes the proximity to the finish of the maze
+     * @return Room with 4 walls
+     */
+    public static Room getRoom(int difficulty) {
 
         Entity.Type[] types = Entity.Type.values();
         Room room = new Room();
@@ -23,44 +34,61 @@ public class RoomFactory {
             type = types[(int) (Math.random() * types.length)];
         }
 
-        // we also want less weapons, so if it's a weapon, "re-roll"
+        // keep track of the number of weapons generated
         if (type == Entity.Type.CLUB || type == Entity.Type.SWORD ||
-            type == Entity.Type.BOW || type == Entity.Type.DAGGER) {
-            type = types[(int) (Math.random() * types.length)];
+                type == Entity.Type.BOW || type == Entity.Type.DAGGER) {
+            // max weapons is 13
+            if (RoomFactory.weaponsGenerated == 13) {
+                do {
+                    // keep re-rolling until item is not a weapon
+                    type = types[(int) (Math.random() * types.length)];
+                } while (type == Entity.Type.CLUB || type == Entity.Type.SWORD ||
+                        type == Entity.Type.BOW || type == Entity.Type.DAGGER);
+            } else {
+                RoomFactory.weaponsGenerated++;
+            }
         }
+
+        // if weapon (may not be used)
+        int damage = (int) (Math.random() * difficulty) / 6 + 5; // 5-21
+        double accuracy = Math.random() * difficulty / 1000 + 0.1; // 0.1-0.2
 
         switch (type) {
             case BOW:
-                entity = new Bow();
+                entity = new Bow(damage, accuracy);
                 break;
             case CLUB:
-                entity = new Club();
+                entity = new Club(damage, accuracy);
                 break;
             case DAGGER:
-                entity = new Dagger();
+                entity = new Dagger(damage, accuracy);
                 break;
             case SWORD:
-                entity = new Sword();
+                entity = new Sword(damage, accuracy);
                 break;
             case ENEMY:
-                int health = (int) (Math.random() * 20) + 5; // 5-24
-                int speed = (int) (Math.random() * 10) + 5; // 5-14
-                int defense = (int) (Math.random() * 10) + 5; // 5-14
-                int attack = (int) (Math.random() * 5) + 5; // 5-9
-                double accuracy = ((int) (Math.random() * 6000) + 3000) / 100.0; // 60.0-90.0
-                entity = new Enemy(health, speed, defense, attack, accuracy);
+                int health = (int) (Math.random() * difficulty) / 3 + 20; // 20-53
+                int speed = (int) (Math.random() * difficulty) / 2 + 5; // 5-55
+                int defense = (int) (Math.random() * difficulty) / 5 + 10; // 10-30
+                int attack = (int) (Math.random() * difficulty) / 6 + 5; // 5-21
+                double acc = Math.random() * difficulty / 500 + 0.1; // .1-.3
+                entity = new Enemy(health, speed, defense, attack, acc);
                 break;
             case HEALTHPACK:
-                entity = new HealthPack();
+                int healthBoost = (int) (Math.random() * difficulty) / 10 + 10; // 10-20
+                entity = new HealthPack(healthBoost);
                 break;
             case ACCURACYBOOST:
-                entity = new AccuracyBoost();
+                double accuracyBoost = Math.random() * difficulty / 2000 + 0.05; // 0.05-0.1
+                entity = new AccuracyBoost(accuracyBoost);
                 break;
             case STRENGTHPOTION:
-                entity = new StrengthPotion();
+                int attackBoost = (int) (Math.random() * difficulty) / 20 + 5; // 5-10
+                entity = new StrengthPotion(attackBoost);
                 break;
             case DEFENSEBOOST:
-                entity = new DefenseBoost();
+                int defenseBoost = (int) (Math.random() * difficulty) / 20 + 5; // 5-10
+                entity = new DefenseBoost(defenseBoost);
                 break;
         }
 
