@@ -17,6 +17,18 @@ public class RoomFactory {
         Entity.Type type = types[(int) (Math.random() * types.length)];
         Entity entity = null;
 
+        // we want more enemies, so if it's not an enemy, we "re-roll" to get a slightly
+        // higher chance of getting enemies
+        if (type != Entity.Type.ENEMY) {
+            type = types[(int) (Math.random() * types.length)];
+        }
+
+        // we also want less weapons, so if it's a weapon, "re-roll"
+        if (type == Entity.Type.CLUB || type == Entity.Type.SWORD ||
+            type == Entity.Type.BOW || type == Entity.Type.DAGGER) {
+            type = types[(int) (Math.random() * types.length)];
+        }
+
         switch (type) {
             case BOW:
                 entity = new Bow();

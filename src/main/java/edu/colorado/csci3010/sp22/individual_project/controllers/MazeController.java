@@ -4,7 +4,9 @@ import edu.colorado.csci3010.sp22.individual_project.Main;
 import edu.colorado.csci3010.sp22.individual_project.model.Maze;
 import edu.colorado.csci3010.sp22.individual_project.model.Player;
 import edu.colorado.csci3010.sp22.individual_project.model.Room;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Enemy;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
 import edu.colorado.csci3010.sp22.individual_project.observers.Event;
 import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
 import edu.colorado.csci3010.sp22.individual_project.observers.WinEvent;
@@ -23,10 +25,6 @@ public class MazeController implements Listener {
     private static final int LINE_LENGTH = 100;
     private Maze maze;
     private Player player;
-    @FXML
-    private Circle playerAvatar;
-    @FXML
-    private Pane miniMapContainer;
     @FXML
     private MiniMapController miniMapController;
     @FXML
@@ -96,33 +94,18 @@ public class MazeController implements Listener {
                 if (entity == null) continue;
 
                 ImageView imageView = new ImageView();
+                Image image = null;
 
-                switch(entity.getType()) {
-                    case BOW:
-                        Image bow = new Image("bow.png");
-                        imageView.setImage(bow);
-                        imageView.setX(middleX - bow.getWidth() / 2);
-                        imageView.setY(middleY - bow.getHeight() / 2);
-                        break;
-                    case SWORD:
-                        Image sword = new Image("sword.png");
-                        imageView.setImage(sword);
-                        imageView.setX(middleX - sword.getWidth() / 2);
-                        imageView.setY(middleY - sword.getHeight() / 2);
-                        break;
-                    case DAGGER:
-                        Image dagger = new Image("dagger.png");
-                        imageView.setImage(dagger);
-                        imageView.setX(middleX - dagger.getWidth() / 2);
-                        imageView.setY(middleY - dagger.getHeight() / 2);
-                        break;
-                    case STRENGTHPOTION:
-                        Image strengthPotion = new Image("strength_potion.png");
-                        imageView.setImage(strengthPotion);
-                        imageView.setX(middleX - strengthPotion.getWidth() / 2);
-                        imageView.setY(middleY - strengthPotion.getHeight() / 2);
-                        break;
+                if (entity instanceof Item) {
+                    image = ((Item) entity).getGraphic();
                 }
+                if (entity instanceof Enemy) {
+                    image = new Image("enemy.png");
+                }
+
+                imageView.setImage(image);
+                imageView.setX(middleX - image.getWidth() / 2);
+                imageView.setY(middleY - image.getHeight() / 2);
 
                 entities.getChildren().add(imageView);
             }

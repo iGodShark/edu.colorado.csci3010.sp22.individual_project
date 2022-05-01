@@ -63,7 +63,7 @@
             </RadialGradient>
          </fill>
       </Rectangle>
-      <Circle fx:id="playerAvatar" layoutX="480.0" layoutY="270.0" radius="45.0" stroke="BLACK" strokeType="INSIDE">
+      <Circle layoutX="480.0" layoutY="270.0" radius="45.0" stroke="BLACK" strokeType="INSIDE">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -86,7 +86,7 @@
             </LinearGradient>
          </fill>
       </Circle>
-      <Pane fx:id="miniMapContainer" layoutX="696.0" layoutY="14.0" prefHeight="160.0" prefWidth="250.0">
+      <Pane layoutX="696.0" layoutY="14.0" prefHeight="160.0" prefWidth="250.0">
              <fx:include fx:id="miniMap" source="minimap_view.fxml" />
       </Pane>
    </children>

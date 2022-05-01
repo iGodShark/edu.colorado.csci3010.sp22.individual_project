@@ -1,5 +1,6 @@
 package edu.colorado.csci3010.sp22.individual_project;
 
+import edu.colorado.csci3010.sp22.individual_project.controllers.BackpackController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.MazeController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.MiniMapController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.PauseController;
@@ -26,6 +27,7 @@ public class Main extends Application {
     private static FXMLLoader pause;
     private static FXMLLoader pauseMiniMap;
     private static FXMLLoader win;
+    private static FXMLLoader backpack;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,22 +35,20 @@ public class Main extends Application {
         Main.game = new Game();
 
         Main.maze = new FXMLLoader(getClass().getResource("maze_view.fxml"));
-        Main.maze.load();
-
         Main.mainMenu = new FXMLLoader(getClass().getResource("menu_view.fxml"));
-        Main.mainMenu.load();
-
         Main.miniMap = new FXMLLoader(getClass().getResource("minimap_view.fxml"));
-        Main.miniMap.load();
-
         Main.pause = new FXMLLoader(getClass().getResource("pause_view.fxml"));
-        Main.pause.load();
-
         Main.pauseMiniMap = new FXMLLoader(getClass().getResource("pause_minimap_view.fxml"));
-        Main.pauseMiniMap.load();
-
         Main.win = new FXMLLoader(getClass().getResource("win_view.fxml"));
+        Main.backpack = new FXMLLoader(getClass().getResource("backpack_view.fxml"));
+
+        Main.maze.load();
+        Main.mainMenu.load();
+        Main.miniMap.load();
+        Main.pause.load();
+        Main.pauseMiniMap.load();
         Main.win.load();
+        Main.backpack.load();
 
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
@@ -105,6 +105,9 @@ public class Main extends Application {
                 case ESCAPE:
                     Main.changeToPause();
                     break;
+                case B:
+                    Main.changeToBackPack();
+                    break;
             }
         });
 
@@ -123,5 +126,12 @@ public class Main extends Application {
         Scene scene = ((Parent) Main.win.getRoot()).getScene();
         if (scene == null) scene = new Scene(Main.win.getRoot());
         Main.stage.setScene(scene);
+    }
+
+    public static void changeToBackPack() {
+        Scene scene = ((Parent) Main.backpack.getRoot()).getScene();
+        if (scene == null) scene = new Scene(Main.backpack.getRoot());
+        Main.stage.setScene(scene);
+        ((BackpackController) Main.backpack.getController()).displayBackpack(Main.game.getPlayer());
     }
 }
