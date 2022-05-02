@@ -3,12 +3,17 @@ package edu.colorado.csci3010.sp22.individual_project.controllers;
 import edu.colorado.csci3010.sp22.individual_project.Main;
 import edu.colorado.csci3010.sp22.individual_project.model.Player;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Weapon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -95,6 +100,31 @@ public class BackpackController {
     @FXML
     private void back(ActionEvent e) {
         Main.changeToMaze();
+    }
+
+    // set active weapon when weapon in arsenal is clicked on
+    @FXML
+    private void setActiveWeapon(MouseEvent e) {
+        // get imageView that was hovered on
+        if (!(e.getTarget() instanceof ImageView)) return;
+        ImageView imageView = (ImageView) e.getTarget();
+
+        ArrayList<ImageView> weaponImageViews = getWeaponImageViews();
+        ArrayList<Item> weapons = Main.getGame().getPlayer().getBackpack().getWeapons();
+
+        int index = weaponImageViews.indexOf(imageView);
+        Item item;
+
+        if (weapons.size() <= index) return;
+        item = weapons.get(index);
+
+        Main.getGame().getPlayer().setActiveWeapon((Weapon) item);
+
+        for (ImageView iv: weaponImageViews) {
+            iv.getParent().setStyle("");
+        }
+
+        imageView.getParent().setStyle("-fx-border-color: black");
     }
 
     // display text when item is hovered on in backpack

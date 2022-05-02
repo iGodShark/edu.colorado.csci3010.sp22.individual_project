@@ -1,20 +1,20 @@
 package edu.colorado.csci3010.sp22.individual_project;
 
 import edu.colorado.csci3010.sp22.individual_project.controllers.BackpackController;
+import edu.colorado.csci3010.sp22.individual_project.controllers.FightController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.MazeController;
-import edu.colorado.csci3010.sp22.individual_project.controllers.MiniMapController;
 import edu.colorado.csci3010.sp22.individual_project.controllers.PauseController;
 import edu.colorado.csci3010.sp22.individual_project.model.Game;
+import edu.colorado.csci3010.sp22.individual_project.model.Player;
 import edu.colorado.csci3010.sp22.individual_project.model.Room;
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Enemy;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -28,6 +28,8 @@ public class Main extends Application {
     private static FXMLLoader pauseMiniMap;
     private static FXMLLoader win;
     private static FXMLLoader backpack;
+    private static FXMLLoader fight;
+    private static FXMLLoader gameOver;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -41,6 +43,8 @@ public class Main extends Application {
         Main.pauseMiniMap = new FXMLLoader(getClass().getResource("pause_minimap_view.fxml"));
         Main.win = new FXMLLoader(getClass().getResource("win_view.fxml"));
         Main.backpack = new FXMLLoader(getClass().getResource("backpack_view.fxml"));
+        Main.fight = new FXMLLoader(getClass().getResource("fight_view.fxml"));
+        Main.gameOver = new FXMLLoader(getClass().getResource("gameover_view.fxml"));
 
         Main.maze.load();
         Main.mainMenu.load();
@@ -49,6 +53,8 @@ public class Main extends Application {
         Main.pauseMiniMap.load();
         Main.win.load();
         Main.backpack.load();
+        Main.fight.load();
+        Main.gameOver.load();
 
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
@@ -133,5 +139,18 @@ public class Main extends Application {
         if (scene == null) scene = new Scene(Main.backpack.getRoot());
         Main.stage.setScene(scene);
         ((BackpackController) Main.backpack.getController()).displayBackpack(Main.game.getPlayer());
+    }
+
+    public static void changeToFight(Enemy e, Player p) {
+        Scene scene = ((Parent) Main.fight.getRoot()).getScene();
+        if (scene == null) scene = new Scene(Main.fight.getRoot());
+        Main.stage.setScene(scene);
+        ((FightController) Main.fight.getController()).startFight(p, e);
+    }
+
+    public static void changeToGameOver() {
+        Scene scene = ((Parent) Main.gameOver.getRoot()).getScene();
+        if (scene == null) scene = new Scene(Main.gameOver.getRoot());
+        Main.stage.setScene(scene);
     }
 }

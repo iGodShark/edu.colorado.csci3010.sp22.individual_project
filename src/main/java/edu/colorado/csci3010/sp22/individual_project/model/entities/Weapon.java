@@ -18,7 +18,7 @@ public abstract class Weapon extends Item {
 
         // miss:
         if (Math.random() > chance) {
-            //TODO: AttackMissEvent
+            e1.createAttackEvent(false, 0, e2);
             return;
         }
 
@@ -29,6 +29,7 @@ public abstract class Weapon extends Item {
 
         // deal damage
         e2.setHealth(e2.getHealth() - damage);
+        e1.createAttackEvent(true, damage, e2);
     }
 
     @Override

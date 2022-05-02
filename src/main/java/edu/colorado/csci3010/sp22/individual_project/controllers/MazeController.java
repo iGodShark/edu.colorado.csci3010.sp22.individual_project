@@ -7,6 +7,7 @@ import edu.colorado.csci3010.sp22.individual_project.model.Room;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Enemy;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
+import edu.colorado.csci3010.sp22.individual_project.observers.EnemyEncounterEvent;
 import edu.colorado.csci3010.sp22.individual_project.observers.Event;
 import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
 import edu.colorado.csci3010.sp22.individual_project.observers.WinEvent;
@@ -116,6 +117,11 @@ public class MazeController implements Listener {
     public void update(Event e) {
         if (e instanceof WinEvent) {
             Main.changeToWin();
+            return;
+        }
+
+        if (e instanceof EnemyEncounterEvent) {
+            Main.changeToFight(((EnemyEncounterEvent) e).getEnemy(), ((EnemyEncounterEvent) e).getPlayer());
         }
     }
 }

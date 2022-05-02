@@ -1,12 +1,10 @@
 package edu.colorado.csci3010.sp22.individual_project.model;
 
+import edu.colorado.csci3010.sp22.individual_project.model.entities.Enemy;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Entity;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Item;
 import edu.colorado.csci3010.sp22.individual_project.model.entities.Weapon;
-import edu.colorado.csci3010.sp22.individual_project.observers.Event;
-import edu.colorado.csci3010.sp22.individual_project.observers.Listener;
-import edu.colorado.csci3010.sp22.individual_project.observers.Observable;
-import edu.colorado.csci3010.sp22.individual_project.observers.WinEvent;
+import edu.colorado.csci3010.sp22.individual_project.observers.*;
 
 import java.util.ArrayList;
 
@@ -84,7 +82,9 @@ public class Game implements Observable {
         }
 
         // if enemy, get into fight
-        // TODO
+        if (entity instanceof Enemy) {
+            this.updateListeners(new EnemyEncounterEvent((Enemy) entity, this.player));
+        }
 
         return true;
     }
@@ -92,6 +92,17 @@ public class Game implements Observable {
     private boolean isWinner() {
         return (player.getX() == maze.getRooms().get(0).size() - 1) &&
                 (player.getY() == maze.getRooms().size() - 1);
+    }
+
+    public void enemyDead(Enemy e) {
+        ArrayList<ArrayList<Room>> rooms = this.maze.getRooms();
+        for (ArrayList<Room> row: rooms) {
+            for (Room room: row) {
+                if (room.getEntity() == e) {
+                    room.setEntity(null);
+                }
+            }
+        }
     }
 
     @Override

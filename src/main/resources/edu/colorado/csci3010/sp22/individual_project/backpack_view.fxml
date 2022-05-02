@@ -18,12 +18,18 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="itemName" />
+                  <Label fx:id="itemName" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                </children>
             </StackPane>
             <StackPane prefHeight="291.0" prefWidth="107.0">
                <children>
-                  <Label fx:id="itemDescription" wrapText="true" />
+                  <Label fx:id="itemDescription" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </children>
             </StackPane>
          </children>
@@ -82,55 +88,55 @@
             </StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
                <children>
-                  <ImageView fx:id="weapon3" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4">
                <children>
-                  <ImageView fx:id="weapon4" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5">
                <children>
-                  <ImageView fx:id="weapon5" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon5" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6">
                <children>
-                  <ImageView fx:id="weapon6" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon6" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon7" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon7" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon8" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon8" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon9" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon9" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon10" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon10" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon11" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon11" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon12" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon12" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <children>
-                  <ImageView fx:id="weapon13" fitHeight="150.0" fitWidth="200.0" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="weapon13" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#setActiveWeapon" onMouseEntered="#itemHover" onMouseExited="#clearHover" pickOnBounds="true" preserveRatio="true" />
                </children></StackPane>
             <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>

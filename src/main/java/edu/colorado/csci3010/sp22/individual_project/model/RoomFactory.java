@@ -34,6 +34,14 @@ public class RoomFactory {
             type = types[(int) (Math.random() * types.length)];
         }
 
+        // we want way less weapons at the beginning, spread them out!
+        for (int i = 0; i < 3; i++) {
+            if (type == Entity.Type.CLUB || type == Entity.Type.SWORD ||
+                    type == Entity.Type.BOW || type == Entity.Type.DAGGER) {
+                type = types[(int) (Math.random() * types.length)];
+            }
+        }
+
         // keep track of the number of weapons generated
         if (type == Entity.Type.CLUB || type == Entity.Type.SWORD ||
                 type == Entity.Type.BOW || type == Entity.Type.DAGGER) {
@@ -67,7 +75,7 @@ public class RoomFactory {
                 entity = new Sword(damage, accuracy);
                 break;
             case ENEMY:
-                int health = (int) (Math.random() * difficulty) / 3 + 20; // 20-53
+                int health = (int) (Math.random() * difficulty) + 20; // 20-120
                 int speed = (int) (Math.random() * difficulty) / 2 + 5; // 5-55
                 int defense = (int) (Math.random() * difficulty) / 5 + 10; // 10-30
                 int attack = (int) (Math.random() * difficulty) / 6 + 5; // 5-21
