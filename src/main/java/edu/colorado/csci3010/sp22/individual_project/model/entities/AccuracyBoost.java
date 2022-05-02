@@ -24,6 +24,6 @@ public class AccuracyBoost extends Item {
     @Override
     public String getDescription() {
         return "Use this item in a fight, and your accuracy will increase by "
-                + Double.toString(((int) this.accuracyBoost * 10000) / 100.0) + "%";
+                + Double.toString((int) (this.accuracyBoost * 10000) / 100.0) + "%";
     }
 }

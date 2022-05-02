@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -24,36 +25,8 @@ public class BackpackController {
     private Label itemName, itemDescription;
 
     public void displayBackpack(Player player) {
-
-        ArrayList<ImageView> weaponImageViews = new ArrayList<>();
-        weaponImageViews.add(weapon1);
-        weaponImageViews.add(weapon2);
-        weaponImageViews.add(weapon3);
-        weaponImageViews.add(weapon4);
-        weaponImageViews.add(weapon5);
-        weaponImageViews.add(weapon6);
-        weaponImageViews.add(weapon7);
-        weaponImageViews.add(weapon8);
-        weaponImageViews.add(weapon9);
-        weaponImageViews.add(weapon10);
-        weaponImageViews.add(weapon11);
-        weaponImageViews.add(weapon12);
-        weaponImageViews.add(weapon13);
-
-        ArrayList<ImageView> itemImageViews = new ArrayList<>();
-        itemImageViews.add(item1);
-        itemImageViews.add(item2);
-        itemImageViews.add(item3);
-        itemImageViews.add(item4);
-        itemImageViews.add(item5);
-        itemImageViews.add(item6);
-        itemImageViews.add(item7);
-        itemImageViews.add(item8);
-        itemImageViews.add(item9);
-        itemImageViews.add(item10);
-        itemImageViews.add(item11);
-        itemImageViews.add(item12);
-        itemImageViews.add(item13);
+        ArrayList<ImageView> weaponImageViews = getWeaponImageViews();
+        ArrayList<ImageView> itemImageViews = getItemImageViews();
 
         for (ImageView weapon: weaponImageViews) {
             weapon.imageProperty().set(null);
@@ -81,8 +54,81 @@ public class BackpackController {
         }
     }
 
+    private ArrayList<ImageView> getWeaponImageViews() {
+        ArrayList<ImageView> weaponImageViews = new ArrayList<>();
+        weaponImageViews.add(weapon1);
+        weaponImageViews.add(weapon2);
+        weaponImageViews.add(weapon3);
+        weaponImageViews.add(weapon4);
+        weaponImageViews.add(weapon5);
+        weaponImageViews.add(weapon6);
+        weaponImageViews.add(weapon7);
+        weaponImageViews.add(weapon8);
+        weaponImageViews.add(weapon9);
+        weaponImageViews.add(weapon10);
+        weaponImageViews.add(weapon11);
+        weaponImageViews.add(weapon12);
+        weaponImageViews.add(weapon13);
+
+        return weaponImageViews;
+    }
+
+    private ArrayList<ImageView> getItemImageViews() {
+        ArrayList<ImageView> itemImageViews = new ArrayList<>();
+        itemImageViews.add(item1);
+        itemImageViews.add(item2);
+        itemImageViews.add(item3);
+        itemImageViews.add(item4);
+        itemImageViews.add(item5);
+        itemImageViews.add(item6);
+        itemImageViews.add(item7);
+        itemImageViews.add(item8);
+        itemImageViews.add(item9);
+        itemImageViews.add(item10);
+        itemImageViews.add(item11);
+        itemImageViews.add(item12);
+        itemImageViews.add(item13);
+
+        return itemImageViews;
+    }
+
     @FXML
     private void back(ActionEvent e) {
         Main.changeToMaze();
+    }
+
+    // display text when item is hovered on in backpack
+    @FXML
+    private void itemHover(MouseEvent e) {
+        // get imageView that was hovered on
+        if (!(e.getTarget() instanceof ImageView)) return;
+        ImageView imageView = (ImageView) e.getTarget();
+
+        ArrayList<ImageView> weaponImageViews = getWeaponImageViews();
+        ArrayList<ImageView> itemImageViews = getItemImageViews();
+
+        int index = weaponImageViews.indexOf(imageView);
+        Item item;
+
+        if (index != -1) {
+            ArrayList<Item> weapons = Main.getGame().getPlayer().getBackpack().getWeapons();
+            if (weapons.size() <= index) return;
+            item = weapons.get(index);
+        } else {
+            index = itemImageViews.indexOf(imageView);
+            ArrayList<Item> items = Main.getGame().getPlayer().getBackpack().getUseableItems();
+            if (items.size() <= index) return;
+            item = items.get(index);
+        }
+
+        // set text
+        this.itemName.setText(item.getName());
+        this.itemDescription.setText(item.getDescription());
+    }
+
+    @FXML
+    private void clearHover(MouseEvent e) {
+        this.itemName.setText("");
+        this.itemDescription.setText("");
     }
 }

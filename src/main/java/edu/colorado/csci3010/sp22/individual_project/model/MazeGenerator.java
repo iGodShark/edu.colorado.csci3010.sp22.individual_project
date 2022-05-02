@@ -1,7 +1,5 @@
 package edu.colorado.csci3010.sp22.individual_project.model;
 
-import edu.colorado.csci3010.sp22.individual_project.model.Room;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
